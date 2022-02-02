@@ -1,0 +1,17 @@
+version: "3"
+services:
+  grafana:
+    image: grafana/grafana:8.1.0
+    ports:
+      - 3000:3000
+    environment:
+      GF_AUTH_ANONYMOUS_ENABLED: 1
+      GF_AUTH_ANONYMOUS_ORG_ROLE: Admin
+      GF_LOG_LEVEL: debug 
+      GF_LOG.CONSOLE_LEVEL: debug 
+    volumes:
+      - ./provisioning:/etc/grafana/provisioning
+      - grafana-data-44736:/var/lib/grafana
+volumes:
+  grafana-data-44736:
+    external: true
